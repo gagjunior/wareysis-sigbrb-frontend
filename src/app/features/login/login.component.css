@@ -1,0 +1,15 @@
+.login-input {
+  border: 2px solid darkorange !important;
+  border-radius: 8px;
+}
+
+.login-input:focus {
+  border-color: darkorange !important; /* força a borda laranja escura */
+  outline: none; /* remove o contorno preto externo */
+  box-shadow: 0 0 5px darkorange; /* opcional: adiciona um brilho */
+}
+
+.login-logo {
+  margin-top: 10px;
+  max-width: 100px;
+}
