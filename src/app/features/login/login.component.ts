@@ -2,7 +2,6 @@ import {Component, inject} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout'
 import {NgClass, NgStyle} from '@angular/common';
 import {RouterLink} from '@angular/router';
-import {RodapeComponent} from '../../shared/rodape/rodape.component';
 import {FloatingInputComponent} from '../../shared/floating-input/floating-input.component';
 
 @Component({
@@ -11,7 +10,6 @@ import {FloatingInputComponent} from '../../shared/floating-input/floating-input
     NgClass,
     NgStyle,
     RouterLink,
-    RodapeComponent,
     FloatingInputComponent
   ],
   templateUrl: './login.component.html',
