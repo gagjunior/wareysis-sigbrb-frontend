@@ -1,0 +1,27 @@
+<div class="w3-sidebar w3-bar-block sidebar-container"
+     [style.display]="isOpen ? 'block' : 'none'"
+     style="z-index:5; position: relative;">
+
+  <div style="position: relative; text-align: center;">
+    <button class="w3-button w3-large"
+            (click)="closeSidebar()"
+            style="position: absolute; top: 0; right: 0;">
+
+      <lucide-icon [img]="circleX" class="w3-text-deep-orange"></lucide-icon>
+    </button>
+    <img src="/images/logo-barbearia.png" alt="logo" class="w3-image w3-margin-top" style="width: 55%;">
+  </div>
+
+  <hr>
+
+  <!-- Links principais -->
+
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+
+  <!-- Botão fixo no final -->
+  <div class="fixed-bottom-button">
+    <a routerLink="/login" class="w3-button w3-orange w3-block">Sair</a>
+  </div>
+</div>
