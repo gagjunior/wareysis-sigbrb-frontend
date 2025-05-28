@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout'
 import {NgClass, NgStyle} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {RodapeComponent} from '../../shared/rodape/rodape.component';
+import {FloatingInputComponent} from '../../shared/floating-input/floating-input.component';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import {RodapeComponent} from '../../shared/rodape/rodape.component';
     NgClass,
     NgStyle,
     RouterLink,
-    RodapeComponent
+    RodapeComponent,
+    FloatingInputComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

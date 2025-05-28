@@ -6,21 +6,13 @@
       <p>Informe seu E-mail e Senha</p>
     </div>
     <form class="margin-bottom-32">
-      <div class="floating-label">
-        <input type="email" id="email" class="w3-input login-input" placeholder=" " required>
-        <label for="email">E-mail</label>
-      </div>
-      <div class="floating-label">
-        <input type="password" id="senha" class="w3-input login-input" placeholder=" " required>
-        <label for="senha">Senha</label>
-      </div>
+      <app-floating-input label="E-mail" id="email" type="email" [required]="true"></app-floating-input>
+      <app-floating-input label="Senha" id="senha" type="password" [required]="true"></app-floating-input>
       <div class="w3-bar margin-top-32">
         <a routerLink="/registro" class="w3-left w3-text-deep-orange">Criar conta</a>
         <button type="submit" class="w3-button w3-round-large w3-right w3-orange">Fazer login</button>
       </div>
     </form>
-
-      <app-rodape></app-rodape>
 
   </div>
 </div>

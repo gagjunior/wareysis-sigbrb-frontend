@@ -1,0 +1,44 @@
+.floating-label {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-label input {
+  width: 100%;
+  padding: 20px 12px 12px 12px;
+  font-size: 16px;
+  border: 2px solid darkorange;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.floating-label input:focus {
+  border-color: darkorange;
+  outline: none;
+  box-shadow: 0 0 4px rgba(255, 140, 0, 0.6);
+}
+
+.floating-label label {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #999;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.2s ease all;
+  background: white;
+  padding: 0 4px;
+  z-index: 1;
+}
+
+.floating-label input:focus + label,
+.floating-label input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 8px;
+  font-size: 12px;
+  color: darkorange;
+}
+
+.floating-label input::placeholder {
+  color: transparent;
+}
