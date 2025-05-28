@@ -1,5 +1,5 @@
 <div [ngClass]="{'w3-container': true, 'large-screen-wrapper': isLargeScreen}">
-  <div [ngStyle]="isLargeScreen ? {'width': '40%', 'margin': '0 auto'} : {'width': '100%'}">
+  <div class="content-wrap" [ngStyle]="isLargeScreen ? {'width': '40%', 'margin': '0 auto'} : {'width': '100%'}">
     <img src="/images/logo-barbearia.png" alt="logo" class="w3-image login-logo">
     <div class="margin-bottom-32">
       <h1>Fazer login</h1>
@@ -15,11 +15,15 @@
         <label for="senha">Senha</label>
       </div>
       <div class="w3-bar margin-top-32">
-        <button type="button" class="w3-button w3-round-large w3-left w3-text-deep-orange" style="text-decoration: underline;">Criar conta</button>
+        <a routerLink="/registro" class="w3-left w3-text-deep-orange">Criar conta</a>
         <button type="submit" class="w3-button w3-round-large w3-right w3-orange">Fazer login</button>
       </div>
     </form>
+
+      <app-rodape></app-rodape>
+
   </div>
 </div>
+
 
 
