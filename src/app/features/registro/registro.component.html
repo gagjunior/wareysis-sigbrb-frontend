@@ -1,0 +1,33 @@
+<div [ngClass]="{'w3-container': true, 'large-screen-wrapper': isLargeScreen}">
+
+  <div class="content-wrap" [ngStyle]="isLargeScreen ? {'width': '40%', 'margin': '0 auto'} : {'width': '100%'}">
+
+    <img src="/images/logo-barbearia.png" alt="logo" class="w3-image login-logo">
+
+    <div class="margin-bottom-32">
+      <h1>Criar conta</h1>
+      <p>Preencha os dados abaixo para criar sua conta</p>
+    </div>
+
+    <form class="margin-bottom-32">
+      <span class="w3-text-deep-orange w3-small">Digite seu e-mail</span>
+      <app-floating-input label="E-mail" id="email" type="email" [required]="true"></app-floating-input>
+
+      <span class="w3-text-deep-orange w3-small">Digite sua senha</span>
+      <app-floating-input label="Senha" id="senha" type="password" [required]="true"></app-floating-input>
+
+      <span class="w3-text-deep-orange w3-small">Confirme sua senha</span>
+      <app-floating-input label="Confirme sua senha" id="confirme-senha" type="password" [required]="true"></app-floating-input>
+
+      <div class="w3-bar margin-top-32">
+        <button type="submit" class="w3-button w3-round-large w3-right w3-orange">Criar conta</button>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+
+
+
