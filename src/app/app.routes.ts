@@ -17,5 +17,9 @@ export const routes: Routes = [
   {
     path: 'onde-estamos',
     loadComponent: () => import('./features/onde-estamos/onde-estamos.component').then(m => m.OndeEstamosComponent)
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent)
   }
 ];
