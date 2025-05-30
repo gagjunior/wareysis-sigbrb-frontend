@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {MenuSidebarComponent} from './menu-sidebar/menu-sidebar.component';
 import {Cog, LucideAngularModule} from 'lucide-angular';
+import {TopNavbarComponent} from './top-navbar/top-navbar.component';
 
 @Component({
   selector: 'app-home',
   imports: [
     MenuSidebarComponent,
-    LucideAngularModule
+    LucideAngularModule,
+    TopNavbarComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

@@ -1,5 +1,16 @@
 <!-- Sidebar -->
-<app-menu-sidebar [isOpen]="isSidebarOpen" (closed)="closeMenuSidebar()"></app-menu-sidebar>
+<app-menu-sidebar [isOpen]="isSidebarOpen" (closed)="closeMenuSidebar()" xmlns="http://www.w3.org/1999/html"></app-menu-sidebar>
+
+<!-- Top Navigation Bar -->
+<app-top-navbar (menuClicked)="openMenuSidebar()"></app-top-navbar>
+
+<!-- Page Content -->
+<div class="w3-container">
+
+
+
+</div>
+
 
 <!-- Overlay -->
 <button class="w3-overlay"
@@ -7,28 +18,3 @@
         [style.display]="isSidebarOpen ? 'block' : 'none'"
         style="cursor:pointer">
 </button>
-
-<!-- Page Content -->
-<div>
-
-
-  <!-- Top Navigation Bar -->
-  <div class="w3-bar w3-padding" style="background-color:#e99559">
-    <button class="w3-bar-item w3-button w3-round-large" (click)="openMenuSidebar()">&#9776; Menu</button>
-
-    <a href="#" class="w3-bar-item w3-button w3-right w3-round-large config-link">
-      <lucide-icon [img]="cogIcon" style="height: 24px;"></lucide-icon>
-      Configurações
-    </a>
-
-  </div>
-
-
-  <div class="w3-container">
-    <h1>Sidebar Overlay</h1>
-    <p>The w3-overlay class can be used to create an overlay effect, when opening the sidebar. The w3-overlay class adds a black background with a 50% opacity
-      to the "page content" - this effect will "highlight" the side navigation</p>
-    <p>Click on the "hamburger menu" to see the effect.</p>
-  </div>
-
-</div>

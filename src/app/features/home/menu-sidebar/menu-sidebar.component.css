@@ -10,3 +10,9 @@
   padding: 4px;
   box-sizing: border-box;
 }
+
+.config-link {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* espaçamento entre ícone e texto */
+}

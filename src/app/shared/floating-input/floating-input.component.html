@@ -3,8 +3,12 @@
     [type]="type"
     [id]="id"
     [placeholder]="' '"
-    class="w3-input login-input"
     [required]="required"
+    [value]="value"
+    (input)="handleInput($event)"
+    (blur)="handleBlur()"
+    [disabled]="isDisabled"
   />
   <label [for]="id">{{ label }}</label>
 </div>
+

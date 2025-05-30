@@ -1,0 +1,5 @@
+.error-message small {
+  color: red;
+  display: block;
+  margin-top: 4px;
+}

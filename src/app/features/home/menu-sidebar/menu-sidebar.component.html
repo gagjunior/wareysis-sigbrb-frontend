@@ -2,26 +2,37 @@
      [style.display]="isOpen ? 'block' : 'none'"
      style="z-index:5; position: relative;">
 
+  <!-- Logo -->
   <div style="position: relative; text-align: center;">
-    <button class="w3-button w3-large"
+
+    <button class="w3-button w3-small"
             (click)="closeSidebar()"
             style="position: absolute; top: 0; right: 0;">
-
-      <lucide-icon [img]="circleX" class="w3-text-deep-orange"></lucide-icon>
+      <lucide-icon [img]="circleX" class="w3-text-deep-orange" size="18"></lucide-icon>
     </button>
+
     <img src="/images/logo-barbearia.png" alt="logo" class="w3-image w3-margin-top" style="width: 55%;">
+
   </div>
 
   <hr>
 
   <!-- Links principais -->
-
   <a href="#" class="w3-bar-item w3-button">Link 1</a>
   <a href="#" class="w3-bar-item w3-button">Link 2</a>
   <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button config-link">
+    <lucide-icon [img]="cogIcon" size="20" style="height: 20px;"></lucide-icon>
+    <span>Configurações</span>
+  </a>
 
   <!-- Botão fixo no final -->
   <div class="fixed-bottom-button">
+    <span class="w3-small">Usuário: Gilberto Araujo Gomes Junior</span>
+    <br>
+    <span class="w3-small">Login: 29/05/2025 10:00</span>
+    <hr>
     <a routerLink="/login" class="w3-button w3-orange w3-block">Sair</a>
   </div>
+
 </div>

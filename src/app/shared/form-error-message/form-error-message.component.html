@@ -1,0 +1,7 @@
+@if (control && showErrors()) {
+  <div class="error-message">
+    @for (error of errorList(); track $index) {
+      <small>{{ error }}</small>
+    }
+  </div>
+}

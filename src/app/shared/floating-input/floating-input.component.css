@@ -1,11 +1,10 @@
 .floating-label {
   position: relative;
-  margin-bottom: 20px;
 }
 
 .floating-label input {
   width: 100%;
-  padding: 20px 12px 12px 12px;
+  padding: 12px 12px 12px 12px;
   font-size: 16px;
   border: 2px solid darkorange;
   border-radius: 8px;
@@ -42,3 +41,4 @@
 .floating-label input::placeholder {
   color: transparent;
 }
+

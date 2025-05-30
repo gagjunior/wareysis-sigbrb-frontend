@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {CircleX, LucideAngularModule} from 'lucide-angular';
+import {CircleX, Cog, LucideAngularModule, LucideIconData} from 'lucide-angular';
 
 @Component({
   selector: 'app-menu-sidebar',
@@ -13,7 +13,9 @@ import {CircleX, LucideAngularModule} from 'lucide-angular';
 })
 export class MenuSidebarComponent {
 
-  readonly circleX = CircleX;
+  protected readonly circleX: LucideIconData = CircleX;
+  protected readonly cogIcon = Cog;
+
 
   @Input() isOpen = false;
   @Output() closed = new EventEmitter<void>();
@@ -21,5 +23,6 @@ export class MenuSidebarComponent {
   closeSidebar(): void {
     this.closed.emit();
   }
+
 
 }

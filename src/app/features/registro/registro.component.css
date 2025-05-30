@@ -1,4 +1,28 @@
 .login-logo {
-  margin-top: 10px;
   max-width: 125px;
+  cursor: pointer;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.button-regra-senha {
+  margin-top: 4px;
+  padding: 4px;
+}
+
+.button-regra-senha:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.registro-input {
+  margin-top: 28px;
+}
+
+
+

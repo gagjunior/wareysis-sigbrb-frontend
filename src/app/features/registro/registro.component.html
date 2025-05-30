@@ -2,30 +2,71 @@
 
   <div class="content-wrap" [ngStyle]="isLargeScreen ? {'width': '40%', 'margin': '0 auto'} : {'width': '100%'}">
 
-    <img src="/images/logo-barbearia.png" alt="logo" class="w3-image login-logo">
+    <img src="/images/logo-barbearia.png" alt="logo" class="w3-image login-logo" routerLink="/">
 
-    <div class="margin-bottom-32">
+    <div class="w3-margin-bottom">
       <h1>Criar conta</h1>
       <p>Preencha os dados abaixo para criar sua conta</p>
     </div>
 
-    <form class="margin-bottom-32">
-      <span class="w3-text-deep-orange w3-small">Digite seu e-mail</span>
-      <app-floating-input label="E-mail" id="email" type="email" [required]="true"></app-floating-input>
+    <form [formGroup]="registerForm" class="form-container" (ngSubmit)="registrarUsuario()">
 
-      <span class="w3-text-deep-orange w3-small">Digite sua senha</span>
-      <app-floating-input label="Senha" id="senha" type="password" [required]="true"></app-floating-input>
+      <!-- Nome completo -->
+      <app-floating-input formControlName="nomeCompleto" label="Nome completo" id="nome" type="text" [required]="true"></app-floating-input>
+      <app-form-error-message [control]="registerForm.get('nomeCompleto')"></app-form-error-message>
 
-      <span class="w3-text-deep-orange w3-small">Confirme sua senha</span>
-      <app-floating-input label="Confirme sua senha" id="confirme-senha" type="password" [required]="true"></app-floating-input>
+      <!-- E-mail -->
+      <app-floating-input formControlName="email" label="E-mail" id="email" type="email" [required]="true" class="registro-input"></app-floating-input>
+      <app-form-error-message [control]="registerForm.get('email')"></app-form-error-message>
 
-      <div class="w3-bar margin-top-32">
-        <button type="submit" class="w3-button w3-round-large w3-right w3-orange">Criar conta</button>
+      <!-- Senha -->
+      <app-floating-input formControlName="senha" label="Senha" id="senha" type="password" [required]="true" class="registro-input"></app-floating-input>
+      <app-form-error-message [control]="registerForm.get('senha')"></app-form-error-message>
+
+      <span class="button-regra-senha w3-small" (click)="exibirRegrasSenha()">Exibir regras de senha</span>
+      <div [ngClass]="{'w3-light-gray': true, 'w3-hide': !regrasSenhaVisivel}">
+        <ul>
+          <li class="w3-small w3-text-deep-orange">8 caracteres ou mais (obrigatório)</li>
+          <li class="w3-small w3-text-deep-orange">pelo menos 1 letra maiúscula (recomendado)</li>
+          <li class="w3-small w3-text-deep-orange">pelo menos 1 numero (recomendado)</li>
+          <li class="w3-small w3-text-deep-orange">pelo menos 1 caractere especial (recomendado)</li>
+        </ul>
+      </div>
+
+
+      <!-- Confirmar senha -->
+      <app-floating-input formControlName="confirmeSenha" label="Confirme sua senha" id="confirme-senha" type="password" [required]="true"
+                          class="registro-input"></app-floating-input>
+      <app-form-error-message [control]="registerForm.get('confirmeSenha')"></app-form-error-message>
+      <app-form-error-message [control]="registerForm"></app-form-error-message>
+
+      <div class="w3-bar registro-input w3-margin-bottom">
+        <button type="submit" class="w3-button w3-block w3-round-large w3-right w3-orange">Criar conta</button>
       </div>
     </form>
 
   </div>
 
+</div>
+
+<app-loading-overlay [visible]="isLoading"></app-loading-overlay>
+
+<div class="w3-modal" [ngStyle]="isVisibleModal ? {'display': 'block'} : {'display': 'none'}">
+  <div class="w3-modal-content w3-animate-zoom w3-round-medium">
+
+    <header class="w3-container w3-padding w3-orange">
+      <h2 class="w3-large">{{operacao}} - {{status}}</h2>
+    </header>
+
+    <div class="w3-container w3-padding">
+      <p>{{message}}</p>
+    </div>
+
+    <footer class="w3-container w3-padding">
+      <button class="w3-button w3-round-large w3-orange w3-right" (click)="closeModal()">Fechar</button>
+    </footer>
+
+  </div>
 </div>
 
 
