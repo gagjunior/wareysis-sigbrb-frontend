@@ -5,10 +5,14 @@
       <h1>Fazer login</h1>
       <p>Informe seu E-mail e Senha</p>
     </div>
-    <form class="w3-margin-bottom">
-      <app-floating-input label="E-mail" id="email" type="email" [required]="true"></app-floating-input>
-      <app-floating-input label="Senha" id="senha" type="password" [required]="true"></app-floating-input>
-      <div class="w3-bar">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="form-container">
+      <app-floating-input formControlName="email" label="E-mail" id="email" type="email" [required]="true"></app-floating-input>
+      <app-form-error-message [control]="loginForm.get('email')"></app-form-error-message>
+
+      <app-floating-input formControlName="senha" label="Senha" id="senha" type="password" [required]="true" class="login-input"></app-floating-input>
+      <app-form-error-message [control]="loginForm.get('senha')"></app-form-error-message>
+
+      <div class="w3-bar login-input">
         <a routerLink="/registro" class="w3-left w3-text-deep-orange w3-button" style="text-decoration: underline">Criar conta</a>
         <button type="submit" class="w3-button w3-round-large w3-right w3-orange">Fazer login</button>
       </div>
@@ -16,6 +20,8 @@
 
   </div>
 </div>
+
+<app-loading-overlay [visible]="isLoading"></app-loading-overlay>
 
 
 

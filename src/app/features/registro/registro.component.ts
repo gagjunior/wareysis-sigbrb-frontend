@@ -4,7 +4,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {NgClass, NgStyle} from '@angular/common';
 import {RegistroService} from './registro.service';
 import {RouterLink} from '@angular/router';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AbstractControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import {FormErrorMessageComponent} from '../../shared/form-error-message/form-error-message.component';
 import {LucideAngularModule} from 'lucide-angular';
 import {LoadingOverlayComponent} from '../../shared/loading-overlay/loading-overlay.component';
@@ -38,9 +38,10 @@ export class RegistroComponent implements OnInit {
   status: string = '';
   message: string = '';
 
+
   constructor(
     private readonly breakpointObserver: BreakpointObserver,
-    private readonly fb: FormBuilder
+    private readonly fb: NonNullableFormBuilder
   ) {
     this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
     .subscribe(result => {
@@ -61,10 +62,12 @@ export class RegistroComponent implements OnInit {
     this.isVisibleModal = false;
   }
 
-  checkPasswords(group: FormGroup) {
+  checkPasswords(control: AbstractControl): ValidationErrors | null {
+    const group = control as FormGroup;
     const senha = group.get('senha')?.value;
     const confirmeSenha = group.get('confirmeSenha')?.value;
-    return senha === confirmeSenha ? null : {notSame: true};
+
+    return senha === confirmeSenha ? null : {passwordsMismatch: true};
   }
 
   exibirRegrasSenha(): void {
@@ -81,8 +84,6 @@ export class RegistroComponent implements OnInit {
     this.isLoading = true;
 
     const {nomeCompleto, email, senha} = this.registerForm.value;
-
-    console.log(nomeCompleto, email, senha);
 
     this.registroService.registerUser({
       nomeCompleto,
