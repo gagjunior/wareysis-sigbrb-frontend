@@ -1,0 +1,17 @@
+<div class="w3-modal" [ngStyle]="visible ? {'display': 'block'} : {'display': 'none'}">
+  <div class="w3-modal-content w3-animate-zoom w3-round-medium">
+
+    <header class="w3-container w3-padding w3-orange">
+      <h2 class="w3-large">{{ operacao }} - {{ status }}</h2>
+    </header>
+
+    <div class="w3-container w3-padding">
+      <p [style.white-space]="'pre-line'">{{ message }}</p>
+    </div>
+
+    <footer class="w3-container w3-padding">
+      <button class="w3-button w3-round-large w3-orange w3-right" (click)="closeModal()">Fechar</button>
+    </footer>
+
+  </div>
+</div>
