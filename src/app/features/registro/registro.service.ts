@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {UsuarioResponseDto} from '../../core/models/usuario.dto';
+import {UsuarioResponseDto} from '../../core/dto/usuario.dto';
 import {RegistroCreateDto} from './registro.dto';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';

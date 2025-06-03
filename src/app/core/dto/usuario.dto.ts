@@ -1,4 +1,4 @@
-import {PerfisDto} from '../../features/registro/registro.dto';
+import {PerfisDto} from './perfil.dto';
 
 export interface UsuarioResponseDto {
 

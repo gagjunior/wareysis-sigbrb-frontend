@@ -8,6 +8,7 @@ import {AbstractControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule,
 import {FormErrorMessageComponent} from '../../shared/form-error-message/form-error-message.component';
 import {LucideAngularModule} from 'lucide-angular';
 import {LoadingOverlayComponent} from '../../shared/loading-overlay/loading-overlay.component';
+import {ModalComponent} from '../../shared/modal/modal.component';
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +20,8 @@ import {LoadingOverlayComponent} from '../../shared/loading-overlay/loading-over
     ReactiveFormsModule,
     FormErrorMessageComponent,
     LucideAngularModule,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    ModalComponent
   ],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
@@ -103,7 +105,11 @@ export class RegistroComponent implements OnInit {
         this.isLoading = false;
         this.isVisibleModal = true;
         this.status = 'Erro'
-        this.message = `Ocorreu um erro ao criar sua conta: ${error.error.message}`;
+        if (error.error.message === undefined || error.error.message === null || error.error.message.trim() === '') {
+          this.message = 'Ocorreu um erro desconhecido ao criar sua conta!\nPor favor, entre em contato com a barbearia';
+        } else {
+          this.message = `Ocorreu um erro ao criar sua conta: \n${error.error.message}`;
+        }
       },
       complete: () => {
         this.isLoading = false;

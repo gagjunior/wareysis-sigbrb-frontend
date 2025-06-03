@@ -23,7 +23,7 @@
       <app-floating-input formControlName="senha" label="Senha" id="senha" type="password" [required]="true" class="registro-input"></app-floating-input>
       <app-form-error-message [control]="registerForm.get('senha')"></app-form-error-message>
 
-      <span class="button-regra-senha w3-small" (click)="exibirRegrasSenha()">Exibir regras de senha</span>
+      <button class="button-regra-senha w3-small w3-left-align w3-border-0" (click)="exibirRegrasSenha()">Exibir regras de senha</button>
       <div [ngClass]="{'w3-light-gray': true, 'w3-hide': !regrasSenhaVisivel}">
         <ul>
           <li class="w3-small w3-text-deep-orange">8 caracteres ou mais (obrigatório)</li>
@@ -51,23 +51,7 @@
 
 <app-loading-overlay [visible]="isLoading"></app-loading-overlay>
 
-<div class="w3-modal" [ngStyle]="isVisibleModal ? {'display': 'block'} : {'display': 'none'}">
-  <div class="w3-modal-content w3-animate-zoom w3-round-medium">
-
-    <header class="w3-container w3-padding w3-orange">
-      <h2 class="w3-large">{{ operacao }} - {{ status }}</h2>
-    </header>
-
-    <div class="w3-container w3-padding">
-      <p>{{ message }}</p>
-    </div>
-
-    <footer class="w3-container w3-padding">
-      <button class="w3-button w3-round-large w3-orange w3-right" (click)="closeModal()">Fechar</button>
-    </footer>
-
-  </div>
-</div>
+<app-modal [visible]="isVisibleModal" [operacao]="operacao" [status]="status" [message]="message" (close)="isVisibleModal = $event"></app-modal>
 
 
 
