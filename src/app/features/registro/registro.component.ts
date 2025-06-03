@@ -3,7 +3,7 @@ import {FloatingInputComponent} from "../../shared/floating-input/floating-input
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {NgClass, NgStyle} from '@angular/common';
 import {RegistroService} from './registro.service';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {AbstractControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import {FormErrorMessageComponent} from '../../shared/form-error-message/form-error-message.component';
 import {LucideAngularModule} from 'lucide-angular';
@@ -29,6 +29,7 @@ import {ModalComponent} from '../../shared/modal/modal.component';
 export class RegistroComponent implements OnInit {
 
   private readonly registroService: RegistroService = inject(RegistroService);
+  private readonly router: Router = inject(Router);
 
   isLargeScreen: boolean = false;
   regrasSenhaVisivel: boolean = false;
@@ -76,9 +77,17 @@ export class RegistroComponent implements OnInit {
     this.regrasSenhaVisivel = !this.regrasSenhaVisivel;
   }
 
+  goToLogin() {
+    this.isVisibleModal = false;
+    this.router.navigate(['/login']);
+  }
+
   registrarUsuario() {
 
     if (this.registerForm.invalid) {
+      this.isVisibleModal = true;
+      this.status = 'Verificar';
+      this.message = 'Verifique os erros no formulário e tente novamente';
       this.registerForm.markAllAsTouched();
       return;
     }
@@ -94,14 +103,12 @@ export class RegistroComponent implements OnInit {
       perfis: [{id: 'CLI'}]
     }).subscribe({
       next: (response) => {
-        console.log(response);
         this.isLoading = false;
         this.isVisibleModal = true;
         this.status = 'Sucesso'
         this.message = 'Conta criada com sucesso!';
       },
       error: (error) => {
-        console.log(error);
         this.isLoading = false;
         this.isVisibleModal = true;
         this.status = 'Erro'

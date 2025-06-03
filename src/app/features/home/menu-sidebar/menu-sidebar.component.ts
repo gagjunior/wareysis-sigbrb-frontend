@@ -1,12 +1,11 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import {CircleX, Cog, LucideAngularModule, LucideIconData} from 'lucide-angular';
 import {AuthService} from '../../../core/auth/auth.service';
 
 @Component({
   selector: 'app-menu-sidebar',
   imports: [
-    RouterLink,
     LucideAngularModule
   ],
   templateUrl: './menu-sidebar.component.html',
@@ -30,7 +29,6 @@ export class MenuSidebarComponent {
   logout(): void {
     this.authService.logout()
     .then(() => {
-      console.log('Logout realizado com sucesso!');
       this.router.navigate(['/login']);
     });
   }

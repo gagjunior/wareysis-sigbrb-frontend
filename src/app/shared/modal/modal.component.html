@@ -3,6 +3,9 @@
 
     <header class="w3-container w3-padding w3-orange">
       <h2 class="w3-large">{{ operacao }} - {{ status }}</h2>
+      <button class="w3-button w3-large w3-display-topright" (click)="closeModal()">
+        <lucide-icon [img]="circleX" size="22"></lucide-icon>
+      </button>
     </header>
 
     <div class="w3-container w3-padding">
@@ -10,7 +13,9 @@
     </div>
 
     <footer class="w3-container w3-padding">
-      <button class="w3-button w3-round-large w3-orange w3-right" (click)="closeModal()">Fechar</button>
+      @if (onAction && actionLabel) {
+        <button class="w3-button w3-round-large w3-orange w3-right" (click)="onActionClick()">{{ actionLabel }}</button>
+      }
     </footer>
 
   </div>

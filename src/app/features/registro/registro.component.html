@@ -51,7 +51,13 @@
 
 <app-loading-overlay [visible]="isLoading"></app-loading-overlay>
 
-<app-modal [visible]="isVisibleModal" [operacao]="operacao" [status]="status" [message]="message" (close)="isVisibleModal = $event"></app-modal>
+<app-modal [visible]="isVisibleModal"
+           [operacao]="operacao"
+           [status]="status"
+           [message]="message"
+           [actionLabel]="'Ir para Login'"
+           [onAction]="goToLogin.bind(this)"
+           (close)="isVisibleModal = $event"></app-modal>
 
 
 

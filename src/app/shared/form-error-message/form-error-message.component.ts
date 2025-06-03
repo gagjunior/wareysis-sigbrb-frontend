@@ -16,17 +16,22 @@ export class FormErrorMessageComponent {
   }
 
   errorList(): string[] {
-    if (!this.control || !this.control.errors) return [];
+    if (!this.control?.errors) return [];
 
     const errors: ValidationErrors = this.control.errors;
-    const messages: string[] = [];
 
-    if (errors['required']) messages.push('Este campo é obrigatório.');
-    if (errors['email']) messages.push('Formato de e-mail inválido.');
-    if (errors['minlength']) messages.push(`Mínimo de ${errors['minlength'].requiredLength} caracteres.`);
-    if (errors['notSame']) messages.push('As senhas não conferem.');
+    const messagesMap: Record<string, (err: any) => string> = {
+      required: () => 'Este campo é obrigatório.',
+      email: () => 'Formato de e-mail inválido.',
+      minlength: (err) => `Mínimo de ${err.requiredLength} caracteres.`,
+      passwordsMismatch: () => 'As senhas não conferem.'
+    };
 
-    return messages;
+    return Object.keys(errors).map(key => {
+      const generateMessage = messagesMap[key];
+      return generateMessage ? generateMessage(errors[key]) : '';
+    }).filter(msg => msg);
+    ;
   }
 
 }

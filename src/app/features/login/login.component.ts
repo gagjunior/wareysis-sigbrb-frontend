@@ -7,6 +7,7 @@ import {AuthService} from '../../core/auth/auth.service';
 import {FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {FormErrorMessageComponent} from '../../shared/form-error-message/form-error-message.component';
 import {LoadingOverlayComponent} from '../../shared/loading-overlay/loading-overlay.component';
+import {ModalComponent} from '../../shared/modal/modal.component';
 
 @Component({
   selector: 'app-login',
@@ -18,22 +19,28 @@ import {LoadingOverlayComponent} from '../../shared/loading-overlay/loading-over
     FormsModule,
     ReactiveFormsModule,
     FormErrorMessageComponent,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    ModalComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
 
-  isLargeScreen: boolean = false;
-  breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
   private readonly authService: AuthService = inject(AuthService);
   private readonly router: Router = inject(Router);
+  private readonly breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
+  private readonly fb: NonNullableFormBuilder = inject(NonNullableFormBuilder);
+
+  isLargeScreen: boolean = false;
   loginForm!: FormGroup;
   isLoading: boolean = false;
+  status: string = '';
+  message: string = '';
+  isVisibleModal: boolean = false;
 
 
-  constructor(private readonly fb: NonNullableFormBuilder) {
+  constructor() {
     this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
     .subscribe(result => {
       this.isLargeScreen = result.matches;
@@ -67,7 +74,11 @@ export class LoginComponent implements OnInit {
     })
     .catch((error) => {
       this.isLoading = false;
-      console.log(error);
+      this.isVisibleModal = true;
+      this.status = 'Erro!'
+
+      this.message = error.message;
+
     });
   }
 

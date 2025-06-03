@@ -22,6 +22,7 @@
 </div>
 
 <app-loading-overlay [visible]="isLoading"></app-loading-overlay>
+<app-modal operacao="Login" [status]="status" [message]="message" [visible]="isVisibleModal" (close)="isVisibleModal = $event"></app-modal>
 
 
 
