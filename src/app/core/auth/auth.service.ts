@@ -1,5 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Auth, signInWithEmailAndPassword, UserCredential} from '@angular/fire/auth';
+import {inject, Injectable} from '@angular/core';
+import {Auth, signInWithEmailAndPassword, user, User} from '@angular/fire/auth';
+import {map, Observable} from 'rxjs';
 
 
 @Injectable({
@@ -7,20 +8,34 @@ import {Auth, signInWithEmailAndPassword, UserCredential} from '@angular/fire/au
 })
 export class AuthService {
 
-  constructor(private readonly auth: Auth) {
+  private readonly auth: Auth = inject(Auth)
+
+  user$: Observable<User | null> = user(this.auth);
+  isLoggedIn$: Observable<boolean> = this.user$.pipe(map(user => !!user));
+
+  constructor() {
   }
 
-  async login(email: string, password: string): Promise<UserCredential> {
+  async login(email: string, password: string): Promise<User> {
     try {
-      return await signInWithEmailAndPassword(this.auth, email, password);
-    } catch (e) {
-      console.log(e);
-      throw e;
+      const credential = await signInWithEmailAndPassword(this.auth, email, password);
+      return credential.user;
+    } catch (e: any) {
+      if (e.code === 'auth/invalid-credential') {
+        throw new Error('E-mail ou senha inválidos. Verifique os valores digitados');
+      }
+
+      throw new Error('Erro ao fazer login.');
     }
   }
 
+
   logout(): Promise<void> {
     return this.auth.signOut();
+  }
+
+  getCurrentUser() {
+    return this.auth.currentUser
   }
 
 }
