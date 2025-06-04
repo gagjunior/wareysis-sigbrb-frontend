@@ -34,8 +34,9 @@ export class AuthService {
     return this.auth.signOut();
   }
 
-  getCurrentUser() {
-    return this.auth.currentUser
+  get currentUser(): User | null {
+    return this.auth.currentUser;
   }
+
 
 }

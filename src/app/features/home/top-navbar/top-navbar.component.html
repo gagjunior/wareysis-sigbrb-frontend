@@ -2,7 +2,7 @@
 
   <div class="left-section">
     <button class="w3-button w3-round-medium config-link" (click)="menuClicked.emit()">
-      <lucide-icon [img]="menu" size="24" style="height: 24px;"></lucide-icon>
+      <lucide-icon [img]="menuIcon" size="24" style="height: 24px;"></lucide-icon>
       Menu
     </button>
   </div>
@@ -12,8 +12,8 @@
   </div>
 
   <div class="right-section">
-    <span class="w3-small">Usuário: Gilberto Araujo Gomes Junior</span>
-    <span class="w3-small">Login: 29/05/2025 10:00</span>
+    <span class="w3-small">Usuário: {{ displayName }}</span>
+    <span class="w3-small">Login: {{ lastSignInTime | date:'dd/MM/yyyy HH:mm' }}</span>
   </div>
 
 </div>
