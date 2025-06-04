@@ -18,9 +18,12 @@
   <hr>
 
   <!-- Links principais -->
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button config-link">
+    <lucide-icon [img]="listIcon" size="20" style="height: 20px;"></lucide-icon>
+    <span>Cadastros</span>
+  </a>
+  <a href="#" class="w3-bar-item w3-button">Relatórios</a>
+  <a href="#" class="w3-bar-item w3-button">Profissionais</a>
   <a href="#" class="w3-bar-item w3-button config-link">
     <lucide-icon [img]="cogIcon" size="20" style="height: 20px;"></lucide-icon>
     <span>Configurações</span>
@@ -28,9 +31,6 @@
 
   <!-- Botão fixo no final -->
   <div class="fixed-bottom-button">
-    <span class="w3-small">Usuário: Gilberto Araujo Gomes Junior</span>
-    <br>
-    <span class="w3-small">Login: 29/05/2025 10:00</span>
     <hr>
     <a (click)="logout()" class="w3-button w3-orange w3-block">Sair</a>
   </div>

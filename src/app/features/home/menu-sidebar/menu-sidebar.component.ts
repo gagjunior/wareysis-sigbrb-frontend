@@ -1,6 +1,6 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {CircleX, Cog, LucideAngularModule, LucideIconData} from 'lucide-angular';
+import {CircleX, Cog, ListPlus, LucideAngularModule, LucideIconData} from 'lucide-angular';
 import {AuthService} from '../../../core/auth/auth.service';
 
 @Component({
@@ -14,10 +14,10 @@ import {AuthService} from '../../../core/auth/auth.service';
 export class MenuSidebarComponent {
 
   protected readonly circleX: LucideIconData = CircleX;
-  protected readonly cogIcon = Cog;
+  protected readonly cogIcon: LucideIconData = Cog;
+  protected readonly listIcon: LucideIconData = ListPlus;
   private readonly authService: AuthService = inject(AuthService);
   private readonly router: Router = inject(Router);
-
 
   @Input() isOpen = false;
   @Output() closed = new EventEmitter<void>();
