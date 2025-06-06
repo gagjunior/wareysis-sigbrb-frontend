@@ -3,6 +3,7 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'app-floating-input',
+  standalone: true,
   imports: [],
   templateUrl: './floating-input.component.html',
   styleUrl: './floating-input.component.css',

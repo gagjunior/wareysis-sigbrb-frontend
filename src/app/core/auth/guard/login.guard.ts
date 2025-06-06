@@ -10,7 +10,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
   return authService.user$.pipe(
     map(user => {
       if (user) {
-        return router.createUrlTree(['/home']); // já logado → redireciona
+        return router.createUrlTree(['/app']); // já logado → redireciona
       } else {
         return true; // não logado → permite acesso à rota (login, register, etc)
       }

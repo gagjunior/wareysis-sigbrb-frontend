@@ -6,6 +6,7 @@ import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-top-navbar',
+  standalone: true,
   imports: [
     LucideAngularModule,
     DatePipe

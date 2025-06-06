@@ -4,6 +4,7 @@ import {CircleX, LucideAngularModule, LucideIconData} from 'lucide-angular';
 
 @Component({
   selector: 'app-modal',
+  standalone: true,
   imports: [
     NgStyle,
     LucideAngularModule

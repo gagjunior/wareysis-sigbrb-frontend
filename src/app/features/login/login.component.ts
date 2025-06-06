@@ -11,6 +11,7 @@ import {ModalComponent} from '../../shared/modal/modal.component';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [
     NgClass,
     NgStyle,
@@ -41,21 +42,14 @@ export class LoginComponent implements OnInit {
 
 
   constructor() {
-    this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
-    .subscribe(result => {
-      this.isLargeScreen = result.matches;
-    });
-
+    this.checkScreenSize()
   }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      senha: ['', [Validators.required, Validators.minLength(8)]]
-    })
+    this.createForm();
   }
 
-  login() {
+  login(): void {
 
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
@@ -67,19 +61,35 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
 
     this.authService.login(email, senha)
-    .then((user) => {
-      console.log(user);
-      this.isLoading = false;
-      this.router.navigate(['/home']);
-    })
-    .catch((error) => {
-      this.isLoading = false;
-      this.isVisibleModal = true;
-      this.status = 'Erro!'
+    .then((user) => this.loginSuccess())
+    .catch((error) => this.loginError(error));
+  }
 
-      this.message = error.message;
-
+  private checkScreenSize(): void {
+    this.breakpointObserver.observe([Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge])
+    .subscribe(result => {
+      this.isLargeScreen = result.matches;
     });
+  }
+
+  private createForm(): void {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', [Validators.required, Validators.minLength(8)]]
+    })
+  }
+
+  private loginSuccess(): void {
+    this.isLoading = false;
+    this.router.navigate(['/app']);
+  }
+
+  private loginError(error: any): void {
+    this.isLoading = false;
+    this.isVisibleModal = true;
+    this.status = 'Erro!'
+
+    this.message = error.message;
   }
 
 

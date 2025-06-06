@@ -3,6 +3,7 @@ import {Loader, LucideAngularModule, LucideIconData} from "lucide-angular";
 
 @Component({
   selector: 'app-loading-overlay',
+  standalone: true,
   imports: [
     LucideAngularModule
   ],

@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {FloatingInputComponent} from "../../shared/floating-input/floating-input.component";
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {NgClass, NgStyle} from '@angular/common';
-import {RegistroService} from './registro.service';
+import {CriarContaService} from './criar-conta.service';
 import {Router, RouterLink} from '@angular/router';
 import {AbstractControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import {FormErrorMessageComponent} from '../../shared/form-error-message/form-error-message.component';
@@ -11,7 +11,8 @@ import {LoadingOverlayComponent} from '../../shared/loading-overlay/loading-over
 import {ModalComponent} from '../../shared/modal/modal.component';
 
 @Component({
-  selector: 'app-registro',
+  selector: 'app-criar-conta',
+  standalone: true,
   imports: [
     FloatingInputComponent,
     NgClass,
@@ -23,12 +24,12 @@ import {ModalComponent} from '../../shared/modal/modal.component';
     LoadingOverlayComponent,
     ModalComponent
   ],
-  templateUrl: './registro.component.html',
-  styleUrl: './registro.component.css'
+  templateUrl: './criar-conta.component.html',
+  styleUrl: './criar-conta.component.css'
 })
-export class RegistroComponent implements OnInit {
+export class CriarContaComponent implements OnInit {
 
-  private readonly registroService: RegistroService = inject(RegistroService);
+  private readonly registroService: CriarContaService = inject(CriarContaService);
   private readonly router: Router = inject(Router);
 
   isLargeScreen: boolean = false;

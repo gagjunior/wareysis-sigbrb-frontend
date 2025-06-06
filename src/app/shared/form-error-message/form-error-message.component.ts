@@ -3,6 +3,7 @@ import {AbstractControl, ValidationErrors} from '@angular/forms';
 
 @Component({
   selector: 'app-form-error-message',
+  standalone: true,
   imports: [],
   templateUrl: './form-error-message.component.html',
   styleUrl: './form-error-message.component.css'

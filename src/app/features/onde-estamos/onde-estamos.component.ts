@@ -3,6 +3,7 @@ import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-onde-estamos',
+  standalone: true,
   imports: [
     RouterLink
   ],
@@ -11,6 +12,6 @@ import {RouterLink} from '@angular/router';
 })
 export class OndeEstamosComponent {
 
-  emailBarbearia :string = 'contato@nomedaloja.com';
+  emailBarbearia: string = 'contato@nomedaloja.com';
 
 }
