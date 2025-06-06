@@ -1,0 +1,10 @@
+.config-link {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* espaçamento entre ícone e texto */
+  margin-bottom: 6px;
+}
+
+.config-link lucide-icon {
+  height: 20px;
+}
