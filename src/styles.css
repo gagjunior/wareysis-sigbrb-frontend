@@ -3,19 +3,20 @@
 /* W3.CSS 5.02 March 31 2025 by Jan Egil and Borge Refsnes */
 html {
   box-sizing: border-box;
-  overflow-x: hidden;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 
 *, *:before, *:after {
   box-sizing: inherit
-}
-
-
-body {
-  margin: 0
 }
 
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section {

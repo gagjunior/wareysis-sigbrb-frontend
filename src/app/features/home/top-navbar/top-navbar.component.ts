@@ -20,6 +20,7 @@ export class TopNavbarComponent implements OnInit {
   protected readonly menuIcon: LucideIconData = Menu;
 
   displayName?: string | null;
+  userEmail?: string | null;
   lastSignInTime?: string | null;
 
   @Output() menuClicked = new EventEmitter<void>();
@@ -28,6 +29,7 @@ export class TopNavbarComponent implements OnInit {
     this.authService.user$.pipe(take(1)).subscribe(user => {
       this.displayName = user?.displayName;
       this.lastSignInTime = user?.metadata.lastSignInTime;
+      this.userEmail = user?.email;
     });
   }
 

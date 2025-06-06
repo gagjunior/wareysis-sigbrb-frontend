@@ -23,6 +23,7 @@ export const routes: Routes = [
     path: 'onde-estamos',
     loadComponent: () => import('./features/onde-estamos/onde-estamos.component').then(m => m.OndeEstamosComponent)
   },
+
   // ROTAS PROTEGIDAS DENTRO DE `home` (layout + conteúdo)
   {
     path: 'app',
@@ -43,7 +44,18 @@ export const routes: Routes = [
         path: 'cadastros',
         canActivate: [authGuard],
         loadComponent: () => import('./features/cadastros/cadastros.component').then(c => c.CadastrosComponent)
+      },
+      {
+        path: 'configuracoes',
+        canActivate: [authGuard],
+        loadComponent: () => import('./features/configuracoes/configuracoes.component').then(c => c.ConfiguracoesComponent)
+      },
+      {
+        path: 'relatorios',
+        canActivate: [authGuard],
+        loadComponent: () => import('./features/relatorios/relatorios.component').then(c => c.RelatoriosComponent)
       }
     ]
   },
+  
 ];

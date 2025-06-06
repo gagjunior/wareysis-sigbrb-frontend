@@ -19,15 +19,13 @@
 
   <!-- Links principais -->
   <app-sidebar-item [icon]="listIcon" label="Cadastros" route="/app/cadastros" [onClick]="handleMenuClick.bind(this)"></app-sidebar-item>
+  <app-sidebar-item [icon]="reportIcon" label="Relatórios" route="/app/relatorios" [onClick]="handleMenuClick.bind(this)"></app-sidebar-item>
 
 
   <!-- Botão fixo no final -->
   <div class="fixed-bottom-button">
     <hr>
-    <a href="#" class="w3-bar-item w3-button config-link">
-      <lucide-icon [img]="cogIcon" size="20"></lucide-icon>
-      <span>Configurações</span>
-    </a>
+    <app-sidebar-item [icon]="cogIcon" label="Configurações" route="/app/configuracoes" [onClick]="handleMenuClick.bind(this)"></app-sidebar-item>
     <hr>
     <a (click)="logout()" class="w3-button w3-orange w3-block">Sair</a>
   </div>
